@@ -1,0 +1,20 @@
+{
+    "frontend": {
+        "title": "Frontend Darslari",
+        "lessons": [
+            "HTML/CSS",
+            "SASS/CSS",
+            "JavaScript",
+            "Git/GitHub",
+            "React.js"
+        ]
+    },
+    "kompyutersavodxilik": {
+        "title": "Kompyuter Savodxonligi Darslari",
+        "lessons": [
+            "Word",
+            "PowerPoint",
+            "Excel"
+        ]
+    }
+}
