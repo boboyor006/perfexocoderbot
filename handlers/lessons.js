@@ -1,5 +1,7 @@
 const { getUser } = require('../database/db');
 
+
+
 async function listLessons(bot, msg) {
     const chatId = msg.chat.id;
     const userId = msg.from.id;
@@ -9,6 +11,8 @@ async function listLessons(bot, msg) {
         bot.sendMessage(chatId, 'Siz botga ro‘yxatdan o‘tmagansiz. Avval /start buyrug‘ini kiriting.');
         return;
     }
+
+
 
     const frontendLessons = [
         { name: 'HTML/CSS', locked: false, link: 'https://youtu.be/example1' },
@@ -22,6 +26,8 @@ async function listLessons(bot, msg) {
         { name: 'PowerPoint', locked: false, link: 'https://youtu.be/example6' },
         { name: 'Excel', locked: true, link: 'https://youtu.be/example7' },
     ];
+
+    
 
     bot.sendMessage(chatId, 'Darslarni tanlang:', {
         reply_markup: {

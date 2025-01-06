@@ -26,6 +26,9 @@ bot.onText(/\/start/, (msg) => {
 bot.on('callback_query', async (query) => {
     const chatId = query.message.chat.id;
     const data = query.data;
+     
+
+
 
     if (data === 'check_subscription') {
         await checkSubscription(bot, query.message);
