@@ -1,0 +1,29 @@
+{
+    "computer_literacy": {
+      "name": "Kompyuter Savodxonligi",
+      "1": {
+        "title": "1-dars - Boshlang'ich tushunchalar",
+        "video": "./videos/computer_literacy/word/lesson1.mp4",
+        "thumbnail": "./thumbnails/computer_literacy/lesson1.jpg"
+      },
+      "2": {
+        "title": "2-dars - Operatsion tizimlar",
+        "video": "./videos/computer_literacy/lesson2.mp4",
+        "thumbnail": "./thumbnails/computer_literacy/lesson2.jpg"
+      }
+    },
+    "frontend": {
+      "name": "Frontend",
+      "1": {
+        "title": "1-dars - HTML asoslari",
+        "video": "./videos/frontend/lesson1.mp4",
+        "thumbnail": "./thumbnails/frontend/lesson1.jpg"
+      },
+      "2": {
+        "title": "2-dars - CSS asoslari",
+        "video": "./videos/frontend/lesson2.mp4",
+        "thumbnail": "./thumbnails/frontend/lesson2.jpg"
+      }
+    }
+  }
+  
