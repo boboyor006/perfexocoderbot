@@ -11,7 +11,7 @@ function mainMenu(ctx) {
         reply_markup: {
             keyboard: [
                 [{ text: "📚 Kurslar haqida ma'lumot" }],
-                [{ text: "📝 Kursga yozilish" }],
+    
                 [{ text: "🕒 Kurs jadvali" }],
                 [{ text: "💬 Savollar va javoblar" }],
                 [{ text: "📞 Bog'lanish" }]
@@ -23,7 +23,7 @@ function mainMenu(ctx) {
 
 // Start komandasi
 bot.start((ctx) => {
-    ctx.reply("Assalomu alaykum! Perfexo_coders botiga xush kelibsiz!");
+    ctx.reply("Assalomu alaykum! Perfexo_coders  xush kelibsiz!");
     mainMenu(ctx);
 });
 
@@ -31,69 +31,40 @@ bot.start((ctx) => {
 let registrationData = {};
 
 // Kursga yozilish boshlanishi
-bot.hears("📝 Kursga yozilish", (ctx) => {
-    registrationData[ctx.chat.id] = {}; // Yangi foydalanuvchini ro'yxatga olish
-    ctx.reply("Ismingizni kiriting:");
-    bot.on("text", (ctx) => {
-        const chatId = ctx.chat.id;
-        if (!registrationData[chatId].name) {
-            registrationData[chatId].name = ctx.message.text;
-            ctx.reply("Familiyangizni kiriting:");
-        } else if (!registrationData[chatId].surname) {
-            registrationData[chatId].surname = ctx.message.text;
-            ctx.reply("Soat nechidan nechigacha qatnashmoqchisiz?");
-        } else if (!registrationData[chatId].time) {
-            registrationData[chatId].time = ctx.message.text;
-            ctx.reply("Telefon raqamingizni kiriting:");
-        } else if (!registrationData[chatId].phone) {
-            registrationData[chatId].phone = ctx.message.text;
-            ctx.reply("Qaysi kursga yozilmoqchisiz?");
-        } else if (!registrationData[chatId].course) {
-            registrationData[chatId].course = ctx.message.text;
+// bot.hears("📝 Kursga yozilish", (ctx) => {
+//     registrationData[ctx.chat.id] = {}; // Yangi foydalanuvchini ro'yxatga olish
+//     ctx.reply("Ismingizni kiriting:");
+//     bot.on("text", (ctx) => {
+//         const chatId = ctx.chat.id;
+//         if (!registrationData[chatId].name) {
+//             registrationData[chatId].name = ctx.message.text;
+//             ctx.reply("Familiyangizni kiriting:");
+//         } else if (!registrationData[chatId].surname) {
+//             registrationData[chatId].surname = ctx.message.text;
+//             ctx.reply("Soat nechidan nechigacha qatnashmoqchisiz?");
+//         } else if (!registrationData[chatId].time) {
+//             registrationData[chatId].time = ctx.message.text;
+//             ctx.reply("Telefon raqamingizni kiriting:");
+//         } else if (!registrationData[chatId].phone) {
+//             registrationData[chatId].phone = ctx.message.text;
+//             ctx.reply("Qaysi kursga yozilmoqchisiz?");
+//         } else if (!registrationData[chatId].course) {
+//             registrationData[chatId].course = ctx.message.text;
 
-            // Yuborish tugmasini taklif qilish
-            ctx.reply("Barcha ma'lumotlar to'ldirildi. Yuborish tugmasini bosing:", {
-                reply_markup: {
-                    inline_keyboard: [
-                        [{ text: "Yuborish", callback_data: "submit" }]
-                    ]
-                }
-            });
-        }
-    });
-});
+//             // Yuborish tugmasini taklif qilish
+//             ctx.reply("Barcha ma'lumotlar to'ldirildi. Yuborish tugmasini bosing:", {
+//                 reply_markup: {
+//                     inline_keyboard: [
+//                         [{ text: "Yuborish", callback_data: "submit" }]
+//                     ]
+//                 }
+//             });
+//         }
+//     });
+// });
 
 // Yuborish tugmasi bosilganda
-bot.on("callback_query", async (ctx) => {
-    const chatId = ctx.chat.id;
 
-    if (ctx.callbackQuery.data === "submit" && registrationData[chatId]) {
-        const userInfo = registrationData[chatId];
-        const message = `
-📋 Kursga yozilish ma'lumotlari:
-👤 Ism: ${userInfo.name}
-👤 Familiya: ${userInfo.surname}
-🕒 Vaqti: ${userInfo.time}
-📞 Telefon: ${userInfo.phone}
-📚 Kurs: ${userInfo.course}
-        `;
-
-        // Username orqali xabar yuborish
-        try {
-            await ctx.telegram.sendMessage("@Polatov0555", message);
-            ctx.reply("Ma'lumotlar muvaffaqiyatli yuborildi!");
-        } catch (err) {
-            console.error("Xato:", err);
-            ctx.reply(
-                "Xatolik yuz berdi. Iltimos, username yoki chat mavjudligini tekshiring:\n" +
-                `${err.response.description}`
-            );
-        }
-
-        // Ro'yxatni tozalash
-        delete registrationData[chatId];
-    }
-});
 
 // Boshqa menyu bo'limlari
 bot.hears("📚 Kurslar haqida ma'lumot", (ctx) => {
